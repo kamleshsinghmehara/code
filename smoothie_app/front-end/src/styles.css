@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Calibri', sans-serif;
+}
+
+.m-font-size {
+    font-size: medium;
+}
+
+.s-font-size {
+    font-size: x-small;
+}
+
+.simple-font-wt {
+    font-weight: 400;
+}

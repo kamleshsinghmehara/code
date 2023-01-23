@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-9">
+        <app-products #productsC></app-products>
+    </div>
+    <div class="col-md-3" *ngIf="userRole === 'user'">
+        <app-shopping-cart #shoppingCartC></app-shopping-cart>
+    </div>
+    <div class="col-md-3" *ngIf="userRole === 'owner'">
+        <div class="card text-white bg-danger mb-3 shadow" style="max-width: 18rem;">
+            <div class="card-body">
+                <p class="card-title m-font-size">
+                    <span>Why not try something new because life gets boring when you stay within the limits of what you
+                        already know.</span>
+                </p>
+                <hr>
+                <button class="btn btn-light btn-block btn-sm" (click)="addProduct()"><i
+                        class="bi bi-plus-circle-fill"></i> Add a new <i class="bi bi-cup-straw"></i> Smoothie
+                </button>
+
+                <p class="card-title m-font-size c-margin-top">
+                    <span>Want to view all the Orders?</span>
+                </p>
+                <hr>
+                <button class="btn btn-light btn-block btn-sm" (click)="viewAllOrders()"><i class="bi bi-card-list"></i>
+                     View all Orders
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

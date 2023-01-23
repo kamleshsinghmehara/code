@@ -1,0 +1,86 @@
+<div>
+    <div class="row card-deck">
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders">
+            <div class="card text-left shadow">
+                <div class="card-header product-card-bg">
+                    <h5 class="m-font-size"><i class="bi bi-cup-straw"></i> {{order.product.name}} --- <i
+                            class="bi bi-tag"></i>${{order.product.price}}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title s-font-size"><i class="bi bi-asterisk"></i> {{order.product.description}}</h6>
+                    <hr />
+                    <div class="row" *ngIf="order.product.nutritionValue">
+                        <table class="table s-font-size">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="4" class="simple-font-wt"><i class="bi bi-info-circle"></i>
+                                        Nutrition Value per serving
+                                        (300ml)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Carbohydrate (g)</th>
+                                    <td>{{order.product.nutritionValue.carbohydrate}}</td>
+                                    <th scope="row">Protein (g)</th>
+                                    <td>{{order.product.nutritionValue.protein}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Fat (g)</th>
+                                    <td>{{order.product.nutritionValue.fat}}</td>
+                                    <th scope="row">Cholestrol (mg)</th>
+                                    <td>{{order.product.nutritionValue.cholestrol}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sodium (mg)</th>
+                                    <td>{{order.product.nutritionValue.sodium}}</td>
+                                    <th scope="row">Potassium (mg)</th>
+                                    <td>{{order.product.nutritionValue.potassium}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Calcium (mg)</th>
+                                    <td>{{order.product.nutritionValue.calcium}}</td>
+                                    <th scope="row">Iron (mg)</th>
+                                    <td>{{order.product.nutritionValue.iron}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Total Calories (kcal)</th>
+                                    <td>{{order.product.nutritionValue.calories}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row" *ngIf="userRole==='user'">
+                        <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">
+                            <input type="number" min="0" class="form-control" [(ngModel)]="order.quantity">
+                        </div>
+                        <div class="col-6 padding-0" *ngIf="!isProductSelected(order.product)">
+                            <button class="btn btn-success btn-sm" (click)="addToCart(order)"
+                                [disabled]="order.quantity <= 0">
+                                <h6><i class="bi bi-cart-plus-fill"></i> Add to cart</h6>
+                            </button>
+                        </div>
+                        <div class="col-12" *ngIf="isProductSelected(order.product)">
+                            <button class="btn btn-danger btn-block btn-sm" (click)="removeFromCart(order)">
+                                <h6><i class="bi bi-cart-dash"></i> Remove from cart</h6>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="userRole==='owner'">
+                        <div class="col-4">
+                            <button class="btn btn-warning btn-block btn-sm" (click)="editProduct(order.product)">
+                                <span><i class="bi bi-pencil-fill s-font-size"></i> Edit</span>
+                            </button>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-danger btn-block btn-sm" (click)="deleteProduct(order.product.id)">
+                                <span><i class="bi bi-trash-fill s-font-size"></i> Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

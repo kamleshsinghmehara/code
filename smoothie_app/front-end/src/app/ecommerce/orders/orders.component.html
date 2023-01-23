@@ -1,0 +1,30 @@
+<div class="row">
+    <table class="table s-font-size">
+        <thead>
+            <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">No of Products</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <th scope="row">{{order.id}}</th>
+                <td>{{order.dateCreated}}</td>
+                <td>{{order.numberOfProducts}}</td>
+                <td>{{order.totalOrderPrice}}</td>
+                <td>{{order.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col-6">
+        <button class="btn btn-danger btn-sm" (click)="back()">
+            <i class="bi bi-house"></i> Back
+        </button> 
+    </div>
+</div>
+

@@ -1,0 +1,135 @@
+<div class="row g-5">
+    <div class="col-md-7 col-lg-8 shadow p-3 mb-5 bg-white rounded">
+        <h4 class="mb-3">Smoothie Information</h4>
+        <form class="needs-validation" novalidate [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <label>Basic Details</label>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" formControlName="name" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" required />
+                                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['name'].errors['required']">Name is required</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="price" class="form-label">Price</label>
+                                    <input type="text" formControlName="price" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" required />
+                                    <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['price'].errors['required']">Price is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="description" class="form-label">Description</label>
+                                    <input type="textarea" formControlName="description" class="form-control" id="description"
+                                        placeholder="Please enter smoothie description">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <label>Nutrition Details</label>
+                        </div>
+                        <div class="card-body" formGroupName="nutritionValue">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="carbohydrate" class="form-label">Carbohydrate</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="carbohydrate" class="form-control" id="carbohydrate">
+                                </div>
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Protein</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="protein" class="form-control" id="protein">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Fat</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="fat" class="form-control" id="fat">
+                                </div>
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Cholestrol</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="cholestrol" class="form-control" id="cholestrol">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Sodium</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="sodium" class="form-control" id="sodium">
+                                </div>
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Potassium</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="potassium" class="form-control" id="potassium">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Calcium</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="calcium" class="form-control" id="calcium">
+                                </div>
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Iron</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="iron" class="form-control" id="iron">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="carbs" class="form-label">Calorioes</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" formControlName="calories" class="form-control" id="calories">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2 col-custom-width">
+                            <button [disabled]="loading" class="btn btn-success btn-sm">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                <i class="bi bi-save"></i> Save
+                            </button>
+                        </div>
+                        <div class="col-2 col-custom-padding">
+                            <button class="btn btn-danger btn-sm" (click)="cancel()">
+                                <i class="bi bi-x-lg"></i> Cancel
+                            </button> 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
